@@ -4,16 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="css/text" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://kit.fontawesome.com/b0cb6f0851.js" crossorigin="anonymous"></script>
     <title>Quiz</title>
 </head>
-<body>
+<body class="grid"> 
     
 
 
+<main class="main">
+
+<section class="starter grid">
+
+  <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" style="width: 70%; margin: 0 auto;"> 
+
+  <button class="btn start fs600">Start</button>
+  
+</section>
+
+<section class="question questionGrid grid fs-600">
+    <span class="question-span">Question 1</span>
+    <h3 class="whatCapital">What's the capital of <span id="country"></span></h3>
+
+    <p class="one answer"></p>
+    <p class="two answer"></p>
+    <p class="three answer"></p>
+    <p class="four answer"></p>
+
+    <button class="btn next fs500">Next</button>
+</section>
 
 
-    <h1>Hi</h1>
+
+
+</main>
 
 <script src="sandbox.js"></script>
 </body>
