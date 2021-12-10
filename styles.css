@@ -1,0 +1,12 @@
+
+
+:root {
+    box-sizing: border-box;
+    --dark-blue: hsl(233, 54%, 45%);
+}
+
+
+body {
+    background-color: red;
+    color: pink;
+}
