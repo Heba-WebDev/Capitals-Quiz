@@ -171,7 +171,7 @@ body {
 .starter {
     padding-top: 6rem;
     justify-content: center;
-    height: 100%;
+    height: 25%;
     gap: 1.5rem;
 }
 
@@ -224,4 +224,18 @@ body {
 .next {
     justify-self: end;
     width: 30%;
+}
+
+.question, .questionTwo, .questionThree, .questionFour, .questionFive, .result {
+    display: none;
+}
+
+
+.questionGrid {
+   height: 100%;
+   align-items: center;
+}
+
+.questionGrid > * {
+    margin-top: 1rem;
 }

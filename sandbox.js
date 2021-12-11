@@ -3,18 +3,29 @@
 let starter = document.querySelector('.starter');
 
 
+let score = document.querySelector('.score');
 
-let starterBtn = document.querySelector('.start');
+let result = document.querySelector('.result');
+
+let scoreCounter = 0;
+
+let questionsCounter = 0;
+
+
 
 let questionOne = document.querySelector('.question');
+let questionTwo = document.querySelector('.questionTwo');
+let questionThree = document.querySelector('.questionThree');
+let questionfour = document.querySelector('.questionFour');
+let questionFive = document.querySelector('.questionFive');
 
 
 
-let country = document.querySelector('#country');
-let one = document.querySelector('.one');
-let two = document.querySelector('.two');
-let three = document.querySelector('.three');
-let four = document.querySelector('.four');
+let country = document.querySelectorAll('#country');
+let one = document.querySelectorAll('.one');
+let two = document.querySelectorAll('.two');
+let three = document.querySelectorAll('.three');
+let four = document.querySelectorAll('.four');
 
 
 let min1 = Math.ceil(0);
@@ -45,7 +56,9 @@ async function getCountries() {
   newArr.push(countries.data[Math.floor(Math.random()*(max3-min3) + min3)]['capital']);
   newArr.push(countries.data[Math.floor(Math.random()*(max4-min4) + min4)]['capital']);
 
- country.innerHTML = `${countries.data[num]['name']}`
+ country.forEach((x) => {
+  x.innerHTML = `${countries.data[num]['name']}`
+ })
  
  
  
@@ -56,10 +69,20 @@ let answer = document.querySelectorAll('.answer');
  let ShuffledArray = newArr.sort(() => Math.random() - .5);
 
  for(let i = ShuffledArray.length; i > 0; i--) {
-  one.innerHTML = `${ShuffledArray[0]}`;
-  two.innerHTML = `${ShuffledArray[1]}`;
-  three.innerHTML = `${ShuffledArray[2]}`;
-  four.innerHTML = `${ShuffledArray[3]}`;
+  
+  one.forEach((x) => {
+    x.innerHTML = `${ShuffledArray[0]}`;
+  })
+  two.forEach((x) => {
+    x.innerHTML = `${ShuffledArray[1]}`;
+  })
+  three.forEach((x) => {
+    x.innerHTML = `${ShuffledArray[2]}`;
+  })
+  four.forEach((x) => {
+    x.innerHTML = `${ShuffledArray[3]}`;
+  })
+  
   
  }
 
@@ -72,10 +95,84 @@ let answer = document.querySelectorAll('.answer');
 getCountries();
 
 let countriesBtn = document.querySelector('#countries');
-countriesBtn.addEventListener('click', refreshList);
 
-function refreshList(){
-    setTimeout(() => {
-     getCountries();
-   }, 100);
-  }
+
+
+
+
+
+
+let starterBtn = document.querySelector('.start');
+
+starterBtn.addEventListener('click', showFirstQ);
+
+function showFirstQ() {
+
+  setTimeout(() => {
+    getCountries();
+  }, 100);
+
+  starter.style.display = 'none';
+  questionOne.style.display = 'block';
+}
+
+let nextBtn = document.querySelector('.next');
+
+
+nextBtn.addEventListener('click', showSecondQ);
+
+function showSecondQ() {
+  setTimeout(() => {
+    getCountries();
+  }, 100);
+  questionOne.style.display = 'none';
+  questionTwo.style.display = 'block';
+}
+
+let nextBtn2 = document.querySelector('.next2');
+
+nextBtn2.addEventListener('click', showSThirdQ);
+
+function showSThirdQ() {
+  setTimeout(() => {
+    getCountries();
+  }, 100);
+  questionTwo.style.display = 'none';
+  questionThree.style.display = 'block';
+}
+
+let nextBtn3 = document.querySelector('.next3');
+
+nextBtn3.addEventListener('click', showFourthQ);
+
+function showFourthQ() {
+  setTimeout(() => {
+    getCountries();
+  }, 100);
+  questionThree.style.display = 'none';
+  questionfour.style.display = 'block';
+}
+
+
+let nextBtn4 = document.querySelector('.next4');
+
+nextBtn4.addEventListener('click', showFiveQ);
+
+function showFiveQ() {
+  setTimeout(() => {
+    getCountries();
+  }, 100);
+  questionfour.style.display = 'none';
+  questionFive.style.display = 'block';
+}
+
+
+let nextBtn5 = document.querySelector('.next5');
+
+nextBtn5.addEventListener('click', showResult);
+
+function showResult() {
+ 
+  questionFive.style.display = 'none';
+  result.style.display = 'block';
+}
