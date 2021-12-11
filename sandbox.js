@@ -11,7 +11,9 @@ let scoreCounter = 0;
 
 let questionsCounter = 0;
 
+let CorrectAnswer = '';
 
+let group1 = document.querySelectorAll('.group1');
 
 let questionOne = document.querySelector('.question');
 let questionTwo = document.querySelector('.questionTwo');
@@ -43,6 +45,9 @@ let max = Math.floor(250);
 let randomNum = Math.floor(Math.random()*(max - min) + min); 
 
 
+
+let answersArr = [];
+
 async function getCountries() {
   let response = await fetch('https://countriesnow.space/api/v0.1/countries/capital');
   let countries = await response.json();
@@ -51,6 +56,8 @@ async function getCountries() {
   let num = Math.floor(Math.random()*(max - min) + min);
   
   let randomNum = Math.floor(Math.random()*(max1-min1) + min1);
+  answersArr.push(countries.data[num]['capital'])
+  CorrectAnswer += `${countries.data[num]['capital']}`;
   newArr.push(countries.data[num]['capital']);
   newArr.push(countries.data[Math.floor(Math.random()*(max2-min2) + min2)]['capital']);
   newArr.push(countries.data[Math.floor(Math.random()*(max3-min3) + min3)]['capital']);
@@ -87,7 +94,7 @@ let answer = document.querySelectorAll('.answer');
  }
 
  newArr.sort(() => Math.random() - .5)
-  console.log(countries.data[num]);
+  
 }
 
 
@@ -100,14 +107,11 @@ let countriesBtn = document.querySelector('#countries');
 
 
 
-
-
 let starterBtn = document.querySelector('.start');
 
 starterBtn.addEventListener('click', showFirstQ);
 
 function showFirstQ() {
-
   setTimeout(() => {
     getCountries();
   }, 100);
@@ -122,6 +126,7 @@ let nextBtn = document.querySelector('.next');
 nextBtn.addEventListener('click', showSecondQ);
 
 function showSecondQ() {
+
   setTimeout(() => {
     getCountries();
   }, 100);
@@ -164,6 +169,7 @@ function showFiveQ() {
   }, 100);
   questionfour.style.display = 'none';
   questionFive.style.display = 'block';
+  console.log(answersArr)
 }
 
 
@@ -175,4 +181,44 @@ function showResult() {
  
   questionFive.style.display = 'none';
   result.style.display = 'block';
+  
+}
+
+
+let startagain = document.querySelector('.startagain');
+
+startagain.addEventListener('click', startoverQ)
+
+
+function startoverQ() {
+  setTimeout(() => {
+    getCountries();
+  }, 100);
+  result.style.display = 'none';
+  starter.style.display = '';
+  answersArr.length = 0;
+  group1.forEach((x) => {
+    x.style.pointerEvents = '';
+  })
+}
+
+
+let firstAnswer = document.querySelector('#one');
+
+firstAnswer.addEventListener('click', isitrigh);
+
+function isitrigh() {
+  if(firstAnswer.innerHTML == answersArr[0]) {
+    firstAnswer.classList.remove('answer');
+    firstAnswer.classList.add('correct');
+    group1.forEach((x) => {
+      x.style.pointerEvents = 'none';
+    })
+  } else {
+    firstAnswer.classList.remove('answer');
+    firstAnswer.classList.add('wrong');
+    group1.forEach((x) => {
+      x.style.pointerEvents = 'none';
+    })
+  }
 }

@@ -220,10 +220,28 @@ body {
     color: var(--dark-blue);
 }
 
+.correct {
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: var(--lime);
+    color: white;
+    text-align: center;
+    
+}
+
+.wrong {
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: rgb(248, 91, 91);
+    color: white;
+    text-align: center;
+}
+
 
 .next {
     justify-self: end;
-    width: 30%;
+    width: 50%;
+    margin-top: 1rem;
 }
 
 .question, .questionTwo, .questionThree, .questionFour, .questionFive, .result {
@@ -233,9 +251,20 @@ body {
 
 .questionGrid {
    height: 100%;
-   align-items: center;
+   width: 100%;
 }
+
+
 
 .questionGrid > * {
     margin-top: 1rem;
+}
+
+.result {
+    align-items: center;
+    height: 100%;
+}
+
+.result > * {
+    margin-top: 1.5rem;
 }
